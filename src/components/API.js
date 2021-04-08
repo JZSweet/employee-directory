@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import CardColumns from "react-bootstrap/CardColumns";
-import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+import { Container } from "react-bootstrap";
 
 const API = () => {
     const [employees, setEmployees] = useState([]);
@@ -12,20 +15,34 @@ const API = () => {
             });
     }, []);
 
+    const sortEmpolyee = () => {
+        const newEmpolyees = [...employees]
+        newEmpolyees.sort(function(a, b){
+            if(a.name.last < b.name.last) { return -1; }
+            if(a.name.last > b.name.last) { return 1; }
+            return 0;})
+        setEmployees(newEmpolyees)
+    }
+
     return (
-        <CardColumns style={{ width: '18rem' }} border="info" >
-            <Card style={{ width: '18rem' }} border="info">
-            {employees.map(({ picture, name, dob, phone, email }, i) => (
-                <EmployeeCard 
-                picture={picture}
-                name={name} 
-                dob={dob} 
-                phone={phone} 
-                email={email} 
-                i={i} />
-               ))} 
-            </Card>
-        </CardColumns>
+        <Container>
+            <Button onClick={sortEmpolyee}> BUTTON </Button>
+            <CardColumns>
+                {employees.map(({ picture, name, dob, phone, email }, i) => (
+                    <Row>
+                        <Card>
+                            <EmployeeCard
+                                picture={picture}
+                                name={name}
+                                dob={dob}
+                                phone={phone}
+                                email={email}
+                                i={i} />
+                        </Card>
+                    </Row>
+                ))}
+            </CardColumns>
+        </Container>
     );
 }
 

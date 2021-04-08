@@ -1,13 +1,12 @@
 import './App.css';
 import Card from './components/Card'
-import API from "./components/API"
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
     <div>
     <Card />
-    <API />
     </div>
   );
 };
