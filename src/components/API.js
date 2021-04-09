@@ -25,7 +25,6 @@ const API = () => {
     return (
         <Container>
             <Button onClick={sortEmpolyee}> Sort Employees By Last Name</Button>
-
             <CardColumns>
                 {employees.map(({ picture, name, dob, phone, email }, i) => (
                     <Row>
@@ -46,7 +45,7 @@ const API = () => {
 }
 
 const EmployeeCard = ({ picture, name, dob, phone, email }) => (
-    <Card style={{ width: '18rem' }} border="info">
+    <Card style={{ width: "18rem" }} border="info">
         <Card.Body>
             <Card.Img src={picture.thumbnail} alt="employee" />
             <Card.Title> Name: {name.first} {name.last} </Card.Title>
