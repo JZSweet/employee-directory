@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Container, Button, Row, Card, CardColumns } from "react-bootstrap";
+import { Container, InputGroup, FormControl, Button, Row, Card, CardColumns } from "react-bootstrap";
 
 const API = () => {
+    const [title, setTitle] = useState([])
     const [employees, setEmployees] = useState([]);
     useEffect(() => {
         fetch("https://randomuser.me/api/?results=100&nat=us")
@@ -11,6 +12,10 @@ const API = () => {
             });
     }, []);
 
+    const fliterEmpolyee = () => {
+        
+        console.log("click")
+    }
 
     const sortEmpolyee = () => {
         const newEmpolyees = [...employees]
@@ -24,6 +29,13 @@ const API = () => {
 
     return (
         <Container>
+            <InputGroup className="mb-3">
+                <FormControl placeholder="firstname" aria-label="firstname" aria-describedby="basic-addon2"
+                    onChange={event => setTitle(event.target.value)} />
+                <InputGroup.Append>
+                    <Button onClick={fliterEmpolyee} variant="outline-secondary">Filter Employees By First Name</Button>
+                </InputGroup.Append>
+            </InputGroup>
             <Button onClick={sortEmpolyee}> Sort Employees By Last Name</Button>
             <CardColumns>
                 {employees.map(({ picture, name, dob, phone, email }, i) => (
