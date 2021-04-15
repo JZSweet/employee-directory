@@ -1,7 +1,7 @@
 # Employee Directory 
 
 ## URL 
-
+https://jzsweet.github.io/employee-directory
 
 ## Description
 a employee directory with React
