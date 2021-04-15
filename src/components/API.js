@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Container, InputGroup, FormControl, Button, Row, Card, CardColumns } from "react-bootstrap";
 
+let hardEmpy =[]
+
+
 const API = () => {
     const [title, setTitle] = useState([])
     const [employees, setEmployees] = useState([]);
@@ -9,12 +12,19 @@ const API = () => {
             .then((res) => res.json())
             .then((res) => {
                 setEmployees(res.results);
+                hardEmpy = res.results
             });
     }, []);
 
-    const fliterEmpolyee = () => {
-        
-        console.log("click")
+    const fliterEmpolyee = (title) => {
+        let newEmpolyees = [...hardEmpy]
+        newEmpolyees = newEmpolyees.filter(
+            function(currentEmpy){
+                return currentEmpy.name.first.toLowerCase().includes(title.toLowerCase())
+            }
+        )
+        setEmployees(newEmpolyees)
+        console.log("click", title)
     }
 
     const sortEmpolyee = () => {
@@ -31,7 +41,11 @@ const API = () => {
         <Container>
             <InputGroup className="mb-3">
                 <FormControl placeholder="firstname" aria-label="firstname" aria-describedby="basic-addon2"
-                    onChange={event => setTitle(event.target.value)} />
+                    onChange={event => 
+                    { 
+                        setTitle(event.target.value) 
+                        fliterEmpolyee(event.target.value)
+                        } }/>
                 <InputGroup.Append>
                     <Button onClick={fliterEmpolyee} variant="outline-secondary">Filter Employees By First Name</Button>
                 </InputGroup.Append>
