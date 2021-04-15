@@ -7,7 +7,7 @@ function employees() {
       <API/>
     </div>
   );
-}
+};
 
 
 export default employees;

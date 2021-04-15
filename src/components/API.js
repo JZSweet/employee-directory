@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, InputGroup, FormControl, Button, Row, Card, CardColumns } from "react-bootstrap";
 
-let hardEmpy =[]
-
+let hardEmpy = [];
 
 const API = () => {
     const [title, setTitle] = useState([])
@@ -19,13 +18,13 @@ const API = () => {
     const fliterEmpolyee = (title) => {
         let newEmpolyees = [...hardEmpy]
         newEmpolyees = newEmpolyees.filter(
-            function(currentEmpy){
+            function (currentEmpy) {
                 return currentEmpy.name.first.toLowerCase().includes(title.toLowerCase())
             }
-        )
-        setEmployees(newEmpolyees)
+        );
+        setEmployees(newEmpolyees);
         console.log("click", title)
-    }
+    };
 
     const sortEmpolyee = () => {
         const newEmpolyees = [...employees]
@@ -33,19 +32,18 @@ const API = () => {
             if (a.name.last < b.name.last) { return -1; }
             if (a.name.last > b.name.last) { return 1; }
             return 0;
-        })
-        setEmployees(newEmpolyees)
+        });
+        setEmployees(newEmpolyees);
     };
 
     return (
         <Container>
             <InputGroup className="mb-3">
                 <FormControl placeholder="firstname" aria-label="firstname" aria-describedby="basic-addon2"
-                    onChange={event => 
-                    { 
-                        setTitle(event.target.value) 
+                    onChange={event => {
+                        setTitle(event.target.value)
                         fliterEmpolyee(event.target.value)
-                        } }/>
+                    }} />
                 <InputGroup.Append>
                     <Button onClick={fliterEmpolyee} variant="outline-secondary">Filter Employees By First Name</Button>
                 </InputGroup.Append>

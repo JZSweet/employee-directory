@@ -7,7 +7,7 @@ function Header() {
             <h1>React Employee Directory</h1>
             <Card />
         </div>
-    )
-}
+    );
+};
 
 export default Header;
