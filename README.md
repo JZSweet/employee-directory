@@ -14,4 +14,4 @@ a employee directory with React
 
 
 ## Img
-![](public\img\home.png)
+![](./public/img/home.png)
