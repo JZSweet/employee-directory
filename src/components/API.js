@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, InputGroup, FormControl, Button, Row, Card, CardColumns } from "react-bootstrap";
+import { Container, InputGroup, FormControl, Button, Card, CardColumns } from "react-bootstrap";
 
 let hardEmpy = [];
 
@@ -51,17 +51,13 @@ const API = () => {
             <Button onClick={sortEmpolyee}> Sort Employees By Last Name</Button>
             <CardColumns>
                 {employees.map(({ picture, name, dob, phone, email }, i) => (
-                    <Row>
-                        <Card>
-                            <EmployeeCard
-                                picture={picture}
-                                name={name}
-                                dob={dob}
-                                phone={phone}
-                                email={email}
-                                i={i} />
-                        </Card>
-                    </Row>
+                    <EmployeeCard
+                        picture={picture}
+                        name={name}
+                        dob={dob}
+                        phone={phone}
+                        email={email}
+                        i={i} />
                 ))}
             </CardColumns>
         </Container >
